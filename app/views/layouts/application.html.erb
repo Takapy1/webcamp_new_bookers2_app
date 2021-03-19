@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookers2App</title>
+    <title>Bookers2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,15 @@
   </head>
 
   <body>
-    <%= yield %>
+    <% if user_signed_in? %>
+      <%= render 'layouts/login_header' %>
+    <% else %>
+      <%= render 'layouts/logout_header' %>
+    <% end %>
+    <main>
+      <%= render 'shared/flash_message' %>
+      <%= yield %>
+    </main>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

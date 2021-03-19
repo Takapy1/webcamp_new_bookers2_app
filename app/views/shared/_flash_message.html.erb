@@ -1,0 +1,7 @@
+<p id="notice">
+  <% if flash.any? %>
+    <% flash.each do |message_type, message| %>
+          <%= message %>
+    <% end %>
+  <% end %>
+</p>

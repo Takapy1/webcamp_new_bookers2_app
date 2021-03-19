@@ -1,0 +1,12 @@
+<div class="container px-5 px-sm-0">
+  <%= render 'shared/error_messages', model: @book %>
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'users/userinfo', user: @user %>
+      <%= render 'shared/post_form', book: @book, user: @current_user %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <%= render 'shared/post_lists', books: @books, user: @user %>
+    </div>
+  </div>
+</div>
