@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   post 'favorite/:id' => 'favorites#create', as: 'create_favorite'
   delete 'favorite/:id' => 'favorites#destroy', as: 'destroy_favorite'
 
-  post 'book_comment/:id' => 'book_comments#crate', as: 'create_book_comment'
-  delete 'book_comment/:id' => 'book_comments#destroy', as: 'destroy_book_comment'
+  post 'book_comment/:id' => 'book_comments#create', as: 'create_comment'
+  delete 'book_comment/:id' => 'book_comments#destroy', as: 'destroy_comment'
 end

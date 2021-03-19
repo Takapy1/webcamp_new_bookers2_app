@@ -27,7 +27,7 @@
           <i class="fa fa-heart"></i>
             <%= book.favorites_count %>
            <% end %>
-          <% end %>
+        <% end %>
       </td>
       <% if user.id == current_user.id %>
         <td>
@@ -40,3 +40,41 @@
     </tr>
   </tbody>
 </table>
+
+
+<!--コメント表示欄-->
+<div class="comments-list">
+  <% @comments.each do |comment| %>
+    <div class="comment-area">
+      <div class="comment-user-info">
+        <%= link_to comment.user do %>
+            <%= attachment_image_tag comment.user, :profile_image, :fill, 40, 40,
+                                      format: 'jpeg', fallback: "no_image.jpeg", size:'40x40' %>
+            <br>
+            <%= comment.user.name %>
+          <% end %>
+      </div>
+      <div class="comment-body">
+        <%= comment.comment %>
+      </div>
+      <div class="destroy-btn">
+        <% if comment.user.id == current_user.id %>
+            <%= link_to "Destroy", destroy_comment_path(comment), class: "btn btn-sm btn-danger", method: :delete %>
+          <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<!--コメント投稿欄-->
+<div class="comment-form">
+  <%= form_with model: @comment, url: create_comment_path(book), method: :post do |f| %>
+    <div class="form-group">
+      <label for="comment"></label>
+      <%= f.text_area :comment, size: "20x5", autofocus: true, class: "form-control book_comment" %>
+    </div>
+    <div class="actions">
+      <%= f.submit '送信', class: "btn btn-outline-secondary mt-1" %>
+    </div>
+  <% end %>
+</div>
