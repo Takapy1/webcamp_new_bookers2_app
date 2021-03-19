@@ -16,6 +16,19 @@
       <td>
         <%= book.body %>
       </td>
+      <td>
+        <% if current_user.favorite?(book.id) %>
+          <%= link_to destroy_favorite_path(book), method: :delete, class: "favorited-btn" do %>
+            <i class="fa fa-heart"></i>
+            <%= book.favorites_count %>
+          <% end %>
+        <% else %>
+          <%= link_to create_favorite_path(book), method: :post, class: "unfavorited-btn" do %>
+          <i class="fa fa-heart"></i>
+            <%= book.favorites_count %>
+           <% end %>
+          <% end %>
+      </td>
       <% if user.id == current_user.id %>
         <td>
           <%= link_to "Edit", edit_book_path(book), class: "btn btn-sm btn-success" %>
