@@ -44,8 +44,6 @@
   </tbody>
 </table>
 
-
-<!--コメント表示欄-->
 <div class="comments-list">
   <% @book_comments.each do |comment| %>
     <div class="comment-area">
@@ -69,7 +67,6 @@
   <% end %>
 </div>
 
-<!--コメント投稿欄-->
 <div class="comment-form">
   <%= form_with model: @book_comment, url: book_book_comments_path(book), method: :post do |f| %>
     <div class="form-group">

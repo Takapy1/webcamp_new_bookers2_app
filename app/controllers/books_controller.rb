@@ -4,7 +4,7 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all.order(created_at: :desc)
-    # 投稿用のオブジェクトを作成
+    
     @book = Book.new
     @current_user = current_user
   end
@@ -23,13 +23,10 @@ class BooksController < ApplicationController
   end
 
   def show
-    # Bookを特定する（URLの番号はBookモデルのid, Userじゃないから注意)
     @book = Book.find(params[:id])
-    # 投稿用
+  
     @book_new = Book.new
 
-    # idで送られてきたBookを投稿したUserを特定する
-    # 投稿の持っているuser_idが投稿者のidと一致するのでそれを元に見つける。
     @user = User.find_by(id: @book.user_id)
 
     @book_comment = BookComment.new
@@ -37,7 +34,6 @@ class BooksController < ApplicationController
   end
 
   def edit
-    # Bookを特定する
     @book = Book.find(params[:id])
   end
 
