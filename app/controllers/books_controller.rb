@@ -32,8 +32,8 @@ class BooksController < ApplicationController
     # 投稿の持っているuser_idが投稿者のidと一致するのでそれを元に見つける。
     @user = User.find_by(id: @book.user_id)
 
-    @comment = BookComment.new
-    @comments = @book.book_comments
+    @book_comment = BookComment.new
+    @book_comments = @book.book_comments
   end
 
   def edit
